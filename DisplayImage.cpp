@@ -1,13 +1,13 @@
-#include "lession1.h"
-#include "lession2.h"
-#include "lession3.h"
-#include "lession4.h"
+#include "lesson1.h"
+#include "lesson2.h"
+#include "lesson3.h"
+#include "lesson4.h"
 
 int main(int, char**)
 {
-    //lession1::main();
-    //lession2::main();
-    //lession3::main();
-    lession4::main();
+    //lesson1::main();
+    //lesson2::main();
+    //lesson3::main();
+    lesson4::main();
     return 0;
 }

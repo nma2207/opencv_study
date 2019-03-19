@@ -1,4 +1,4 @@
-#include "lession3.h"
+#include "lesson3.h"
 
 #include <opencv2/opencv.hpp>
 
@@ -23,7 +23,7 @@ void calcBlur(int k, void* image)
 
 } // namespace
 
-void lession3::main()
+void lesson3::main()
 {
     Mat image = imread("lena1.jpg");
 

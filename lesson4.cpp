@@ -1,4 +1,4 @@
-#include "lession4.h"
+#include "lesson4.h"
 
 #include <opencv2/opencv.hpp>
 
@@ -145,7 +145,7 @@ void openMorphologyExWindow()
 
 } // namespace
 
-void lession4::main()
+void lesson4::main()
 {
     //openShareperingWindow();
     //openBilateralFilterWindow();

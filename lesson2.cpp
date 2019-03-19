@@ -1,4 +1,4 @@
-#include "lession2.h"
+#include "lesson2.h"
 
 #include <opencv2/opencv.hpp>
 
@@ -51,7 +51,7 @@ Mat getHistogram(Mat& image, int channel)
 
 } // namespace
 
-void lession2::main()
+void lesson2::main()
 {
     Mat image = imread("lena1.jpg");
     Mat histograms{};

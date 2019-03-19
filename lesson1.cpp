@@ -1,4 +1,4 @@
-#include "lession1.h"
+#include "lesson1.h"
 
 #include <opencv2/opencv.hpp>
 
@@ -15,7 +15,7 @@ uchar gammaCorrection(uchar input, double gamma)
 
 } // namespace
 
-void lession1::main()
+void lesson1::main()
 {
     Mat image = imread("lena.jpeg");
     Mat reduced(1, 256, CV_8U);

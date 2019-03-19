@@ -1,6 +1,6 @@
 #pragma once
 
-namespace lession2 {
+namespace lesson2 {
 
 void main();
 
