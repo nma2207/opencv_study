@@ -30,7 +30,8 @@ void lesson3::main()
     namedWindow("Blur image");
 
     int k = 1;
-    createTrackbar("Blur size", "Blur image", &k, 10, calcBlur, &image);
+    createTrackbar("Blur s"
+                   "ize", "Blur image", &k, 10, calcBlur, &image);
 
     calcBlur(k, &image);
     waitKey(0);
