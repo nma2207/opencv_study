@@ -5,6 +5,9 @@
 #include "lesson5.h"
 #include "lesson6.h"
 #include "lesson7.h"
+#include "lesson8.h"
+#include "lesson9.h"
+#include "lesson10.h"
 
 int main(int, char**)
 {
@@ -14,6 +17,9 @@ int main(int, char**)
     // lesson4::main();
     // lesson5::main();
     // lesson6::main();
-    lesson7::main();
+    // lesson7::main(); // wiener filter
+    // lesson8::main(); // find features
+    // lesson9::main(); // find same points
+    lesson10::main(); // edge detection
     return 0;
 }
