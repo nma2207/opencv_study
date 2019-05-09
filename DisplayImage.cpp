@@ -9,6 +9,7 @@
 #include "lesson9.h"
 #include "lesson10.h"
 #include "lesson11.h"
+#include "finalTask.h"
 
 int main(int, char**)
 {
@@ -22,6 +23,8 @@ int main(int, char**)
     // lesson8::main(); // find features
     // lesson9::main(); // find same points
     // lesson10::main(); // edge detection
-    lesson11::main(); // finding contours
+    // lesson11::main(); // finding contours
+    finalTask::wienerFilter();
+    // finalTask::trackFeatures();
     return 0;
 }
