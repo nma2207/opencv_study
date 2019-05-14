@@ -204,9 +204,71 @@ void finalTask::wienerFilter()
 
 namespace  {
 
+struct FeaturesInfo
+{
+    Mat* image;
+    int *threshold;
+    int* angle;
+    int* scale;
+};
+
+void track(int, void* data)
+{
+    FeaturesInfo* info = static_cast<FeaturesInfo*>(data);
+    Mat image = *info->image;
+    int angle = *info->angle;
+    int threshold = *info->threshold;
+    double scale = static_cast<double>(*info->scale) / 10;
+    auto orb = BRISK::create(threshold);
+    //auto orb = AKAZE::create();
+     // auto orb = ORB::create(15);
+
+    //Mat image = imread("lena1.jpg");
+    Mat desc1;
+    std::vector<KeyPoint> points1;
+    //getDescriptors(image, desc1, points1);
+    orb->detect(image, points1);
+    orb->compute(image, points1, desc1);
+
+    Mat image2;
+    //image.copyTo(image2);
+    float cx = image.size().width / 2;
+    float cy = image.size().height / 2;
+
+    Mat transform = getRotationMatrix2D({cx,cy}, angle, scale);
+    warpAffine(image, image2, transform, image.size());
+    Mat desc2;
+    std::vector<KeyPoint> points2;
+
+    orb->detect(image2, points2);
+    orb->compute(image2, points2, desc2);
+
+    auto bfMatcher = BFMatcher::create(NORM_HAMMING);
+
+    std::vector<std::vector<DMatch>> matches;
+    //bfMatcher->match(desc1, desc2, matches);
+    bfMatcher->knnMatch(desc1, desc2, matches, 5);
+    Mat out;
+    std::cout << matches.size() << std::endl;
+    drawMatches(image, points1, image2, points2, matches, out);
+    imshow("features", out);
+}
+
 }
 
 void finalTask::trackFeatures()
 {
-    std::cout << "Final Task: track features";
+    Mat image = imread("lena128.jpg"/*, IMREAD_GRAYSCALE*/);
+    int threshold = 50;
+    int angle = 0;
+    int scale = 10;
+    FeaturesInfo info{&image, &threshold, &angle, &scale};
+
+    namedWindow("features");
+    createTrackbar("threshold", "features", &threshold, 200, track, &info);
+    createTrackbar("    angle", "features", &angle, 360, track, &info);
+    createTrackbar("    scale", "features", &scale, 20, track, &info);
+
+    track(0, &info);
+    waitKey();
 }

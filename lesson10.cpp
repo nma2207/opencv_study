@@ -38,24 +38,24 @@ void canny(int, void* data)
     std::vector<Vec2f> hRes;
     HoughLines(res1, hRes, 1, 1, 10);
 
-    std::cout << hRes.size() << std::endl;
-    for (int i = 0; i < hRes.size() - 1; i++) {
-        double d = hRes[i][0];
-        double theta = hRes[i][1];
-        double r1 = cos(theta);
-        double r2 = -sin(theta);
-        int x1 = d*cos(theta);
-        int y1 =d*sin(theta);
-        int x2 = 10 * r1 + x1;
-        int y2 = 10 * r2 + x2;
-        line(image, {x1, y1}, {x2, y2}, Scalar{0,255,0});
-    }
+//    std::cout << hRes.size() << std::endl;
+//    for (int i = 0; i < hRes.size() - 1; i++) {
+//        double d = hRes[i][0];
+//        double theta = hRes[i][1];
+//        double r1 = cos(theta);
+//        double r2 = -sin(theta);
+//        int x1 = d*cos(theta);
+//        int y1 =d*sin(theta);
+//        int x2 = 10 * r1 + x1;
+//        int y2 = 10 * r2 + x2;
+//        line(image, {x1, y1}, {x2, y2}, Scalar{0,255,0});
+//    }
 // r = cos theta , -sin theta
     // (x,y) = t * r + (x0, y0)
     // (d, theta)
     // (d*cos theta, d * sin theta) = (x0, y0)
 
-    imshow("canny", image);
+    imshow("canny", res);
 }
 
 } // namespace

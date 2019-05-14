@@ -12,11 +12,11 @@ namespace {
 
 void lesson9::main()
 {
-    auto orb = BRISK::create(30, 3, 10);
+    auto orb = BRISK::create(70, 3, 10);
     //auto orb = AKAZE::create();
      // auto orb = ORB::create(15);
 
-    Mat image = imread("lena1.jpg", IMREAD_GRAYSCALE);
+    Mat image = imread("lena1.jpg");
     Mat desc1;
     std::vector<KeyPoint> points1;
     //getDescriptors(image, desc1, points1);
@@ -24,11 +24,13 @@ void lesson9::main()
     orb->compute(image, points1, desc1);
 
     Mat image2 = imread("lena1.jpg");
+    Mat transform = getRotationMatrix2D({256,256}, 30, 1);
+    warpAffine(image2, image2, transform, image.size());
     Mat desc2;
     std::vector<KeyPoint> points2;
 
-    orb->detect(image, points2);
-    orb->compute(image, points2, desc2);
+    orb->detect(image2, points2);
+    orb->compute(image2, points2, desc2);
 
     auto bfMatcher = BFMatcher::create(NORM_HAMMING);
 

@@ -24,7 +24,7 @@ int main(int, char**)
     // lesson9::main(); // find same points
     // lesson10::main(); // edge detection
     // lesson11::main(); // finding contours
-    finalTask::wienerFilter();
-    // finalTask::trackFeatures();
+    // finalTask::wienerFilter();
+    finalTask::trackFeatures();
     return 0;
 }
